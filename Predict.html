@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Prediction</title>
+    <link rel="icon" type="image/x-icon" href="static\assets\favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="static\css\styles.css" rel="stylesheet" />
+    <style>
+        span.normal {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="site-heading text-center text-faded d-none d-lg-block">
+            <span class="site-heading-lower">Machine Learning</span>
+        </h1>
+    </header>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-lg-4"><a href="/" class="nav-link text-uppercase">Home</a></li>
+                    <!--<li class="nav-item px-lg-4"><a href="/analysis" class="nav-link text-uppercase">Analysis</a>
+                    </li>-->
+                    <li class="nav-item px-lg-4"><a href="/predict" class="nav-link text-uppercase">Predict</a>
+                    </li>
+                    <li class="nav-item px-lg-4"><a href="/about" class="nav-link text-uppercase">About</a></li>
+
+            </div>
+        </div>
+    </nav>
+    <section class="page-section cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <div class="cta-inner bg-faded text-center rounded">
+                        <div class="col-md-12">
+                            <form action="/predict" method="POST">
+                                <h1> Predict </h1>
+
+                                <fieldset>
+
+
+                                    <label for="name">Ratio of Nitrogen content in soil</label>
+                                    <input type="number" min="0" max="140" step="1" id="Ratio_of_Nitrogen_content_in_soil"
+                                        name="Ratio_of_Nitrogen_content_in_soil">
+                                    
+
+                                    <label for="name">Ratio of Phosphorous content in soil</label>
+                                    <input type="number" min="5" max="145" step="1" id="Ratio_of_Phosphorous_content_in_soil"
+                                        name="Ratio_of_Phosphorous_content_in_soil">
+
+                                    <label for="name">Ration of Potassium content in soil</label>
+                                    <input type="number" min="5" max="205" step="1" id="Ration_of_Potassium_content_in_soil"
+                                        name="Ration_of_Potassium_content_in_soil">
+
+                                    <label for="name">Temperature in degree Celsius</label>
+                                    <input type="number" min="8" max="45" step="0.1" id="Temperature_in_degree_Celsius"
+                                        name="Temperature_in_degree_Celsius">
+
+                                    <label for="name">Relative humidity in %</label>
+                                    <input type="number" min="14" max="100" step="1" id="Relative_humidity" name="Relative_humidity">
+
+                                    <label for="name">ph value of the soil</label>
+                                    
+                                    <input type="number" min="3.5" step="0.1" max="10" id="ph_value_of_the_soil"
+                                        name="ph_value_of_the_soil">
+
+                                    <label for="name">Rainfall in mm</label>
+                                    <input type="number" min="20" max="300" step="1" id="Rainfall_in_mm" name="Rainfall_in_mm">
+
+
+
+                                </fieldset>
+
+
+                                <button href="/predict" type="submit">Predict</button>
+                                <hr>
+
+                                <h5> The Suggested Crop for Given Climatic Condition is : <span class = 'normal' >{{
+                                        pred_val }}</span></h5>
+                                <hr>
+
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        </footer>
+        <footer class="footer text-faded text-center py-5">
+        <div class="container">
+            <ul class="bd-footer-links">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                </svg>
+                <a href="https://www.linkedin.com/in/shrey-sahai-srivastava-24329718a/"><i
+                        style="margin-right : 0.5em; color:aliceblue" class="icon-home icon-4x"></i>Shrey Sahai Shrivastava </a>
+                &emsp; &emsp;
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                </svg>
+                <a href="https://www.linkedin.com/in/riya-singh-gaur-5236b1211/"><i
+                        style="margin-right : 0.5em; color:aliceblue" class="icon-home icon-4x"></i>Riya Singh Gaur</a>
+                &emsp; &emsp;
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                </svg>
+                <a href="https://www.linkedin.com/in/prajjwal-gupta-/"><i
+                        style="margin-right : 0.5em; color:aliceblue" class="icon-home icon-4x"></i>Prajjwal Gupta</a>
+                &emsp; &emsp;
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                </svg>
+                <a href="https://www.linkedin.com/in/sanchari-gupta-720069239/"><i
+                        style="margin-right : 0.5em; color:aliceblue" class="icon-home icon-4x"></i>Sanchari Gupta</a>
+                &emsp; &emsp;
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                </svg>
+                <a href="https://www.linkedin.com/in/pratham-pratap-singh/"><i
+                        style="margin-right : 0.5em; color:aliceblue" class="icon-home icon-4x"></i>Pratham Pratap Singh</a>
+                &emsp; &emsp;
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-info-square-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                </svg>
+                <a href="/about"><i style="margin-right : 0.5em; color:aliceblue" class="icon-home icon-4x"></i>About
+                    us</a>
+                <br>
+                &emsp; &emsp;
+                <p class="m-0 small">Minor Project, MCA Department(Batch-2023), PSIT Kanpur</p>
+
+            </ul>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="static\js\scripts.js"></script>
+</body>
+
+</html>
